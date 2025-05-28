@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-container {
+      max-width: 600px;
+      margin: 5% auto;
+      background: #2e003e;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px purple;
+    }
+    label, input {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+    }
+    input[type="submit"] {
+      background-color: purple;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    canvas, svg {
+      display: block;
+      margin: 20px auto;
+    }
+    @media(max-width: 720px) {
+      .contact-container {
+        margin: 10% 5%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+        <a href="index.html" class="logo">Jerry</a>
+   <nav>
+            <a href="index.html" > Home</a>
+            <a href="About.html" >About</a>
+            <a href="Contact.html" class="active">Contact</a>
+        </nav>
+
+  </header>
+
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <form id="contactForm" onsubmit="return validateForm()">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Password (min 8 characters):</label>
+      <input type="password" id="password" name="password" required>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <!--Canvas -->
+  <canvas id="myCanvas" width="270" height="100"></canvas>
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "purple";
+    ctx.fillRect(-60, 10, 780, 80);
+    ctx.font = "20px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText("Phone Number:", 5,55);
+    ctx.fillText("0904137138", 145, 55);
+  </script>
+
+  <!-- SVG  -->
+  <svg width="200" height="100">
+    <rect width="200" height="100" fill="black" />
+    <text x="50" y="55" fill="purple" font-size="20">See more</text>
+  </svg>
+
+
+  <script>
+    function validateForm() {
+      const password = document.getElementById("password").value;
+      if (password.length < 8) {
+        alert("Password must be at least 8 characters long.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>
